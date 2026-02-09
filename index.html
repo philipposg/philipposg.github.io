@@ -366,9 +366,9 @@
             <section id="contact">
                 <h2>Contact</h2>
                 <div class="contact-info">
-                    <strong>Email:</strong> <a href="mailto:gouidis@ics.forth.gr">gouidis@ics.forth.gr</a><br>
+                    <strong>Email:</strong> <span id="email-address"></span><br>
                     <strong>Office:</strong> Institute of Computer Science, FORTH, Heraklion, Greece<br>
-                    <strong>Address:</strong> Heraklion, Greece<br>
+                    <strong>Address:</strong>  Heraklion, Greece<br>
                     <strong>Phone:</strong> +30-2811-392534
                 </div>
             </section>
@@ -378,5 +378,28 @@
             <p>&copy; 2025 Filippos Gouidis. Last updated: February 2025.</p>
         </footer>
     </div>
+
+    <script>
+        // Spam-resistant email rendering
+        (function() {
+            const user = 'gouidis';
+            const domain = 'ics.forth.gr';
+            const email = user + '@' + domain;
+            const emailLink = document.createElement('a');
+            emailLink.href = 'mailto:' + email;
+            emailLink.textContent = email;
+            emailLink.style.color = 'var(--accent)';
+            emailLink.style.textDecoration = 'none';
+            emailLink.style.borderBottom = '1px solid transparent';
+            emailLink.style.transition = 'border-color 0.3s ease';
+            emailLink.addEventListener('mouseenter', function() {
+                this.style.borderBottomColor = 'var(--accent)';
+            });
+            emailLink.addEventListener('mouseleave', function() {
+                this.style.borderBottomColor = 'transparent';
+            });
+            document.getElementById('email-address').appendChild(emailLink);
+        })();
+    </script>
 </body>
 </html>
