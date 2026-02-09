@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filippos Gouidis - Postdoctoral Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #f5f1e8;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent: #c14533;
+            --accent-light: #d97564;
+            --border: #d4cfc0;
+            --highlight: #fff8e7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        /* Header Section */
+        header {
+            margin-bottom: 80px;
+            padding-bottom: 40px;
+            border-bottom: 2px solid var(--border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .affiliation {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .links a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .links a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* About Section */
+        .bio {
+            background: var(--highlight);
+            padding: 30px;
+            border-left: 4px solid var(--accent);
+            margin-top: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .interest-item {
+            padding: 15px 20px;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-light);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interest-item:hover {
+            transform: translateX(5px);
+            border-color: var(--accent);
+        }
+
+        /* Publications */
+        .pub-stats {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 25px;
+            background: var(--bg-secondary);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* News/Updates */
+        .news-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .news-content {
+            color: var(--text-primary);
+        }
+
+        /* Contact */
+        .contact-info {
+            margin-top: 20px;
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .pub-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Filippos Gouidis</h1>
+            <div class="subtitle">Postdoctoral Researcher</div>
+            <div class="affiliation">
+                Computational Vision and Robotics Laboratory (CVRL)<br>
+                Institute of Computer Science, FORTH<br>
+                Heraklion, Greece
+            </div>
+            <div class="links">
+                <a href="mailto:gouidis@ics.forth.gr">Email</a>
+                <a href="https://scholar.google.gr/citations?user=GPndzVIAAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank">ORCID</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="cv.pdf" target="_blank">CV (PDF)</a>
+            </div>
+        </header>
+
+        <main>
+            <section id="about">
+                <h2>About</h2>
+                <div class="bio">
+                    I am a Postdoctoral Researcher at the Computational Vision and Robotics Laboratory (CVRL) at FORTH, 
+                    affiliated with the University of Crete. My research focuses on combining structured knowledge 
+                    with data-driven approaches in artificial intelligence, with particular emphasis on hybrid AI systems, 
+                    knowledge graphs, and computer vision applications.
+                    <br><br>
+                    I completed my PhD in Computer Science at the University of Crete in 2025, where I worked on 
+                    combining structured knowledge and data-driven representations for object states classification 
+                    under the supervision of Professor Dimitris Plexousakis and Professor Antonis Argyros.
+                </div>
+            </section>
+
+            <section id="research">
+                <h2>Research Interests</h2>
+                <div class="interests-grid">
+                    <div class="interest-item">Knowledge-Based AI</div>
+                    <div class="interest-item">Knowledge Graphs</div>
+                    <div class="interest-item">Hybrid & Neuro-Symbolic AI</div>
+                    <div class="interest-item">Logic Programming</div>
+                    <div class="interest-item">Graph Neural Networks</div>
+                    <div class="interest-item">Robustness & Generalization in ML</div>
+                    <div class="interest-item">Interpretability</div>
+                </div>
+            </section>
+
+            <section id="publications">
+                <h2>Publications</h2>
+                <div class="pub-stats">
+                    <div class="stat">
+                        <span class="stat-value">18</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">131</span>
+                        <span class="stat-label">Citations</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">h-index</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">i10-index</span>
+                    </div>
+                </div>
+                <p>
+                    I have published in leading computer vision and AI venues including WACV, ICPR, VCIP, and AAAI. 
+                    For a complete list of publications, please visit my 
+                    <a href="https://scholar.google.gr/citations?user=GPndzVIAAAAJ" target="_blank">Google Scholar profile</a>.
+                </p>
+            </section>
+
+            <section id="news">
+                <h2>News & Updates</h2>
+                <div class="news-item">
+                    <div class="news-date">February 2025</div>
+                    <div class="news-content">Started position as Postdoctoral Researcher at CVRL, FORTH</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">January 2025</div>
+                    <div class="news-content">Successfully defended PhD thesis on "Combining Structured Knowledge and Data-driven Representations for Object States Classification"</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">December 2024</div>
+                    <div class="news-content">Joined TwinODIS Project (Horizon Europe)</div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact</h2>
+                <div class="contact-info">
+                    <strong>Email:</strong> <a href="mailto:gouidis@ics.forth.gr">gouidis@ics.forth.gr</a><br>
+                    <strong>Office:</strong> Institute of Computer Science, FORTH, Heraklion, Greece<br>
+                    <strong>Address:</strong> Emparou 23, Heraklion, Greece<br>
+                    <strong>Phone:</strong> +30-2811-392534
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Filippos Gouidis. Last updated: February 2025.</p>
+        </footer>
+    </div>
+</body>
+</html>
